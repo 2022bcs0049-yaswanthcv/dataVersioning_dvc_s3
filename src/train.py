@@ -7,11 +7,14 @@ import json
 # Load dataset
 df = pd.read_csv("data/housing.csv")
 
+# Convert categorical column to numeric
+df = pd.get_dummies(df)
+
 # Features and target
 X = df.drop("median_house_value", axis=1)
 y = df["median_house_value"]
 
-# Train test split
+# Train-test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
 # Train model
